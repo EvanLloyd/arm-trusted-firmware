@@ -134,10 +134,16 @@ uint32_t arm_get_spsr_for_bl32_entry(void)
  ******************************************************************************/
 uint32_t arm_get_spsr_for_bl33_entry(void)
 {
+#ifndef BL33_MODE_AARCH32
 	unsigned long el_status;
 	unsigned int mode;
+#endif
 	uint32_t spsr;
 
+#ifdef BL33_MODE_AARCH32
+	spsr = SPSR_MODE32(MODE32_svc, SPSR_T_ARM, SPSR_E_LITTLE,
+                           DAIF_FIQ_BIT | DAIF_IRQ_BIT | DAIF_ABT_BIT);
+#else
 	/* Figure out what mode we enter the non-secure world in */
 	el_status = read_id_aa64pfr0_el1() >> ID_AA64PFR0_EL2_SHIFT;
 	el_status &= ID_AA64PFR0_ELX_MASK;
@@ -150,6 +156,7 @@ uint32_t arm_get_spsr_for_bl33_entry(void)
 	 * well.
 	 */
 	spsr = SPSR_64(mode, MODE_SP_ELX, DISABLE_ALL_EXCEPTIONS);
+#endif
 	return spsr;
 }
 
