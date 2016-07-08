@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, ARM Limited and Contributors. All rights reserved.
+ * Copyright (c) 2015-2016, ARM Limited and Contributors. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -45,8 +45,7 @@ void soc_css_init_nic400(void)
 	 */
 
 	/*
-	 * Allow non-secure access to some SOC regions, excluding UART1, which
-	 * remains secure.
+	 * Allow non-secure access to some SOC regions, including UART1.
 	 * Note: This is the NIC-400 device on the SOC
 	 */
 	mmio_write_32(SOC_CSS_NIC400_BASE +
@@ -60,9 +59,7 @@ void soc_css_init_nic400(void)
 	mmio_write_32(SOC_CSS_NIC400_BASE +
 		NIC400_ADDR_CTRL_SECURITY_REG(SOC_CSS_NIC400_APB4_BRIDGE), ~0);
 	mmio_write_32(SOC_CSS_NIC400_BASE +
-		NIC400_ADDR_CTRL_SECURITY_REG(SOC_CSS_NIC400_BOOTSEC_BRIDGE),
-		~SOC_CSS_NIC400_BOOTSEC_BRIDGE_UART1);
-
+		NIC400_ADDR_CTRL_SECURITY_REG(SOC_CSS_NIC400_BOOTSEC_BRIDGE), ~0);
 }
 
 
