@@ -232,6 +232,9 @@ void cm_prepare_el3_exit(uint32_t security_state)
 			sctlr_elx &= SCTLR_EE_BIT;
 			sctlr_elx |= SCTLR_EL2_RES1;
 			write_sctlr_el2(sctlr_elx);
+
+			/* Reset CNTVOFF_EL2 */
+			write_cntvoff_el2(0);
 		} else if (EL_IMPLEMENTED(2)) {
 			/*
 			 * EL2 present but unused, need to disable safely.
