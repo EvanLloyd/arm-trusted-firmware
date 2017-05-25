@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, ARM Limited and Contributors. All rights reserved.
+ * Copyright (c) 2015-2017, ARM Limited and Contributors. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -35,9 +35,9 @@ void soc_css_init_nic400(void)
 		NIC400_ADDR_CTRL_SECURITY_REG(SOC_CSS_NIC400_PL354_SMC), ~0);
 	mmio_write_32(SOC_CSS_NIC400_BASE +
 		NIC400_ADDR_CTRL_SECURITY_REG(SOC_CSS_NIC400_APB4_BRIDGE), ~0);
+  /* Configure UART1 for non-secure access */
 	mmio_write_32(SOC_CSS_NIC400_BASE +
-		NIC400_ADDR_CTRL_SECURITY_REG(SOC_CSS_NIC400_BOOTSEC_BRIDGE),
-		~SOC_CSS_NIC400_BOOTSEC_BRIDGE_UART1);
+		NIC400_ADDR_CTRL_SECURITY_REG(SOC_CSS_NIC400_BOOTSEC_BRIDGE), ~0);
 
 }
 
