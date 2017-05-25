@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommandArguments>--verbose create --tb-fw Artifacts/juno_DEBUG/bl2.bin --scp-fw Artifacts/juno_DEBUG/scp_bl2.bin --soc-fw Artifacts/juno_DEBUG/bl31.bin --nt-fw Artifacts/juno_DEBUG/BL33_AP_UEFI.fd  Artifacts/juno_DEBUG/fip_juno.bin</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)..\..\..</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommandArguments>--verbose create --tb-fw Artifacts/juno_DEBUG/bl2.bin --scp-fw Artifacts/juno_DEBUG/scp_bl2.bin --soc-fw Artifacts/juno_DEBUG/bl31.bin --nt-fw Artifacts/juno_DEBUG/BL33_AP_UEFI.fd  Artifacts/juno_DEBUG/fip_juno.bin</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)..\..\..</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>
